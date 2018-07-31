@@ -16,7 +16,8 @@ namespace ImageProcessing
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuForm());
+            MenuForm menuWindow = new MenuForm();
+            menuWindow.ShowDialog();            
         }
     }
 }
