@@ -105,6 +105,7 @@ namespace ImageProcessing
 
         private void buttonSelectImg_Click(object sender, EventArgs e)
         {
+            openFileDialogImg.Reset();
             this.openFileDialogImg.ShowDialog();
             path = openFileDialogImg.FileName;
             try
@@ -112,6 +113,15 @@ namespace ImageProcessing
                 pictureBoxImg.Load(path);
             }
             catch (FileNotFoundException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+            }
+            catch (InvalidOperationException)
             {
                 CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
                 DialogResult result = msgBoxWindow.Show("Image was not selected!");
