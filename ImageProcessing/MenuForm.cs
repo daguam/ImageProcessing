@@ -20,6 +20,7 @@ namespace ImageProcessing
         private const int cCaption = 32;   // Caption bar height;
         string path = null;
         string correct = string.Empty;
+        List<Point> pointList = new List<Point>();  // List where centers are stored
 
         public MenuForm()
         {
@@ -132,7 +133,7 @@ namespace ImageProcessing
             {
                 if (correct != string.Empty)
                 {
-                    pictureBoxImg.Load(correct);
+                    pictureBoxImg.Load(correct);    // Reloads current image
                 }
                 else
                 {
@@ -148,11 +149,11 @@ namespace ImageProcessing
             {
                 if (correct != string.Empty)
                 {
-                        pictureBoxImg.Load(correct);
+                        pictureBoxImg.Load(correct);    //Reloads current image
                 }
-                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
-                DialogResult result = msgBoxWindow.Show("File Format is not valid!");
-                if (result == DialogResult.OK)
+                    CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                    DialogResult result = msgBoxWindow.Show("File Format is not valid!");
+                    if (result == DialogResult.OK)
                 {
                     openFileDialogImg.Reset();  // Resets openDialog.FileName
                     msgBoxWindow.Close();
@@ -161,11 +162,28 @@ namespace ImageProcessing
             
         }
 
-        // Open FindCenters window
+        // Open FindCenters window if image processing is succesfull
         private void buttonFindCenters_Click(object sender, EventArgs e)
         {
-            FindCenters findCentersWindow = new FindCenters();
-            findCentersWindow.ShowDialog();
+            try
+            {
+                Bitmap img = new Bitmap(path);
+                FindCirclesCentersForm findCentersWindow = new FindCirclesCentersForm(img, pointList);
+                if (findCentersWindow.Fail == false)
+                {
+                    findCentersWindow.ShowDialog();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+
+            }
         }
     }
 }

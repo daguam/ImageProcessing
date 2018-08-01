@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessing
 {
-    partial class FindCenters
+    partial class FindCirclesCentersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCenters));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCirclesCentersForm));
             this.panelWindow = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
@@ -121,6 +121,7 @@
             this.pictureBoxFindCC.Location = new System.Drawing.Point(12, 41);
             this.pictureBoxFindCC.Name = "pictureBoxFindCC";
             this.pictureBoxFindCC.Size = new System.Drawing.Size(500, 500);
+            this.pictureBoxFindCC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFindCC.TabIndex = 3;
             this.pictureBoxFindCC.TabStop = false;
             // 
@@ -160,7 +161,7 @@
             this.labelCenters.TabIndex = 6;
             this.labelCenters.Text = "Centers";
             // 
-            // FindCenters
+            // FindCirclesCentersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,7 +173,7 @@
             this.Controls.Add(this.panelWindow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FindCenters";
+            this.Name = "FindCirclesCentersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FindCenters";
             this.panelWindow.ResumeLayout(false);
