@@ -33,7 +33,10 @@
             this.buttonFullScreen = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panelWindow = new System.Windows.Forms.Panel();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelWindow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -89,6 +92,8 @@
             // panelWindow
             // 
             this.panelWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelWindow.Controls.Add(this.labelTitle);
+            this.panelWindow.Controls.Add(this.pictureBoxIcon);
             this.panelWindow.Controls.Add(this.buttonExit);
             this.panelWindow.Controls.Add(this.buttonMinimize);
             this.panelWindow.Controls.Add(this.buttonFullScreen);
@@ -100,6 +105,27 @@
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
             this.panelWindow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseUp);
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelTitle.Location = new System.Drawing.Point(39, 10);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(57, 13);
+            this.labelTitle.TabIndex = 2;
+            this.labelTitle.Text = "ImagePro";
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.Image = global::ImageProcessing.Properties.Resources.ImageProBar;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(3, 2);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxIcon.TabIndex = 2;
+            this.pictureBoxIcon.TabStop = false;
             // 
             // MenuForm
             // 
@@ -114,6 +140,8 @@
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelWindow.ResumeLayout(false);
+            this.panelWindow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -124,6 +152,8 @@
         private System.Windows.Forms.Button buttonFullScreen;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Panel panelWindow;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
+        private System.Windows.Forms.Label labelTitle;
     }
 }
 

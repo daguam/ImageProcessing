@@ -15,9 +15,17 @@ namespace ImageProcessing
         Boolean drag;
         int mouseX;
         int mouseY;
+
         public MenuForm()
         {
             InitializeComponent();
+
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
