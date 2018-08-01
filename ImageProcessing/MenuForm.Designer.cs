@@ -202,6 +202,7 @@
             this.MinimumSize = new System.Drawing.Size(933, 600);
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ImagePro";
             this.panelWindow.ResumeLayout(false);
             this.panelWindow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
