@@ -10,15 +10,19 @@ using System.Windows.Forms;
 
 namespace ImageProcessing
 {
-    public partial class CustomMsgBoxForm : Form
+    public partial class FindCenters : Form
     {
         Boolean drag;
         int mouseX;
         int mouseY;
-
-        public CustomMsgBoxForm()
+        public FindCenters()
         {
             InitializeComponent();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);     // Draws borders
         }
 
         // Drag Window
@@ -42,23 +46,11 @@ namespace ImageProcessing
         {
             drag = false;
         }
-        
-        // Draws Borders
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        }
 
-        // Show method for CustomMsgBox message
-        public DialogResult Show(string text)
+        // Minimize window
+        private void buttonMinimize_Click(object sender, EventArgs e)
         {
-            labelMsg.Text = text;
-            return this.ShowDialog();
-        }
-
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
+            this.WindowState = FormWindowState.Minimized;
         }
 
         // Exit
@@ -66,6 +58,5 @@ namespace ImageProcessing
         {
             this.Close();
         }
-
     }
 }

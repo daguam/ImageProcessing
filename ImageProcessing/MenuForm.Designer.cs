@@ -37,6 +37,7 @@
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonSelectImg = new System.Windows.Forms.Button();
             this.openFileDialogImg = new System.Windows.Forms.OpenFileDialog();
+            this.buttonFindCenters = new System.Windows.Forms.Button();
             this.pictureBoxImg = new System.Windows.Forms.PictureBox();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
@@ -155,6 +156,23 @@
             // 
             this.openFileDialogImg.FileName = "openFileDialog";
             // 
+            // buttonFindCenters
+            // 
+            this.buttonFindCenters.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonFindCenters.AutoSize = true;
+            this.buttonFindCenters.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonFindCenters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonFindCenters.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonFindCenters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFindCenters.ForeColor = System.Drawing.Color.White;
+            this.buttonFindCenters.Location = new System.Drawing.Point(420, 510);
+            this.buttonFindCenters.Name = "buttonFindCenters";
+            this.buttonFindCenters.Size = new System.Drawing.Size(84, 25);
+            this.buttonFindCenters.TabIndex = 0;
+            this.buttonFindCenters.Text = "Find Centers";
+            this.buttonFindCenters.UseVisualStyleBackColor = false;
+            this.buttonFindCenters.Click += new System.EventHandler(this.buttonFindCenters_Click);
+            // 
             // pictureBoxImg
             // 
             this.pictureBoxImg.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -174,6 +192,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(933, 600);
             this.Controls.Add(this.pictureBoxImg);
+            this.Controls.Add(this.buttonFindCenters);
             this.Controls.Add(this.buttonSelectImg);
             this.Controls.Add(this.panelWindow);
             this.DoubleBuffered = true;
@@ -203,6 +222,7 @@
         private System.Windows.Forms.Button buttonSelectImg;
         private System.Windows.Forms.PictureBox pictureBoxImg;
         private System.Windows.Forms.OpenFileDialog openFileDialogImg;
+        private System.Windows.Forms.Button buttonFindCenters;
     }
 }
 

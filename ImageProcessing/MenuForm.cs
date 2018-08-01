@@ -59,6 +59,7 @@ namespace ImageProcessing
             base.WndProc(ref m);
         }
 
+        // Exit
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -158,6 +159,13 @@ namespace ImageProcessing
                 }
             }
             
+        }
+
+        // Open FindCenters window
+        private void buttonFindCenters_Click(object sender, EventArgs e)
+        {
+            FindCenters findCentersWindow = new FindCenters();
+            findCentersWindow.ShowDialog();
         }
     }
 }

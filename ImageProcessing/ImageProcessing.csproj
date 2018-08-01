@@ -51,6 +51,12 @@
     <Compile Include="CustomMsgBoxForm.Designer.cs">
       <DependentUpon>CustomMsgBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindCenters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindCenters.Designer.cs">
+      <DependentUpon>FindCenters.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustomMsgBoxForm.resx">
       <DependentUpon>CustomMsgBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindCenters.resx">
+      <DependentUpon>FindCenters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
