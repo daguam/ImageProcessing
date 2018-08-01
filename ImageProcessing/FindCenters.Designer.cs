@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCenters));
             this.panelWindow = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
@@ -170,6 +171,7 @@
             this.Controls.Add(this.pictureBoxFindCC);
             this.Controls.Add(this.panelWindow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FindCenters";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FindCenters";
