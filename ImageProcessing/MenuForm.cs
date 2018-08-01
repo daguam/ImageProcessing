@@ -19,6 +19,7 @@ namespace ImageProcessing
         private const int cGrip = 16;      // Grip size
         private const int cCaption = 32;   // Caption bar height;
         string path = null;
+        string correct = string.Empty;
 
         public MenuForm()
         {
@@ -109,12 +110,12 @@ namespace ImageProcessing
         // Load Image to pictureBox
         private void buttonSelectImg_Click(object sender, EventArgs e)
         {
-            openFileDialogImg.Reset();  // Resets openDialog.FileName
             this.openFileDialogImg.ShowDialog();
             path = openFileDialogImg.FileName;
             try
             {
                 pictureBoxImg.Load(path);
+                correct = path;
             }
             catch (FileNotFoundException)
             {
@@ -123,23 +124,36 @@ namespace ImageProcessing
                 if (result == DialogResult.OK)
                 {
                     msgBoxWindow.Close();
+
                 }
             }
             catch (InvalidOperationException)
             {
-                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
-                DialogResult result = msgBoxWindow.Show("Image was not selected!");
-                if (result == DialogResult.OK)
+                if (correct != string.Empty)
                 {
-                    msgBoxWindow.Close();
+                    pictureBoxImg.Load(correct);
+                }
+                else
+                {
+                    CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                    DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                    if (result == DialogResult.OK)
+                    {
+                        msgBoxWindow.Close();
+                    }
                 }
             }
             catch (ArgumentException)
             {
+                if (correct != string.Empty)
+                {
+                        pictureBoxImg.Load(correct);
+                }
                 CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
                 DialogResult result = msgBoxWindow.Show("File Format is not valid!");
                 if (result == DialogResult.OK)
                 {
+                    openFileDialogImg.Reset();  // Resets openDialog.FileName
                     msgBoxWindow.Close();
                 }
             }
