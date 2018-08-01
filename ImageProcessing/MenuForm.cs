@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ImageProcessing
 {
@@ -17,6 +18,7 @@ namespace ImageProcessing
         int mouseY;
         private const int cGrip = 16;      // Grip size
         private const int cCaption = 32;   // Caption bar height;
+        string path = null;
 
         public MenuForm()
         {
@@ -99,6 +101,35 @@ namespace ImageProcessing
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void buttonSelectImg_Click(object sender, EventArgs e)
+        {
+            this.openFileDialogImg.ShowDialog();
+            path = openFileDialogImg.FileName;
+            try
+            {
+                pictureBoxImg.Load(path);
+            }
+            catch (FileNotFoundException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+            }
+            catch (ArgumentException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("File Format is not valid!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+            }
+            
         }
     }
 }
