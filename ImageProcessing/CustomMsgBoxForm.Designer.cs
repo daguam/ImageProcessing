@@ -33,6 +33,7 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelMsg = new System.Windows.Forms.Label();
             this.panelMsgBox = new System.Windows.Forms.Panel();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.panelWindow.SuspendLayout();
             this.panelMsgBox.SuspendLayout();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             // panelWindow
             // 
             this.panelWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelWindow.Controls.Add(this.labelWarning);
             this.panelWindow.Controls.Add(this.buttonExit);
             this.panelWindow.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
@@ -106,6 +108,17 @@
             this.panelMsgBox.Size = new System.Drawing.Size(286, 100);
             this.panelMsgBox.TabIndex = 5;
             // 
+            // labelWarning
+            // 
+            this.labelWarning.AutoSize = true;
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.White;
+            this.labelWarning.Location = new System.Drawing.Point(8, 4);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(15, 21);
+            this.labelWarning.TabIndex = 1;
+            this.labelWarning.Text = "!";
+            // 
             // CustomMsgBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +133,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomMsgBoxForm";
             this.panelWindow.ResumeLayout(false);
+            this.panelWindow.PerformLayout();
             this.panelMsgBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -132,5 +146,6 @@
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelMsg;
         private System.Windows.Forms.Panel panelMsgBox;
+        private System.Windows.Forms.Label labelWarning;
     }
 }
