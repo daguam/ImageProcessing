@@ -21,6 +21,7 @@ namespace ImageProcessing
             InitializeComponent();
         }
 
+        // Drag Window
         private void panelWindow_MouseDown(object sender, MouseEventArgs e)
         {
             drag = true;
@@ -41,12 +42,14 @@ namespace ImageProcessing
         {
             drag = false;
         }
-
+        
+        // Draws Borders
         protected override void OnPaint(PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
         }
 
+        // Show method for CustomMsgBox message
         public DialogResult Show(string text)
         {
             labelMsg.Text = text;

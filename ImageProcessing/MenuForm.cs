@@ -23,21 +23,21 @@ namespace ImageProcessing
         public MenuForm()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.DoubleBuffered = true;
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-
+            this.SetStyle(ControlStyles.ResizeRedraw, true);    // Allows window resize (Double Buffered is set to true)
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // Creates 1 point resize for window
             Rectangle rc = new Rectangle(this.ClientSize.Width - cGrip, this.ClientSize.Height - cGrip, cGrip, cGrip);
             ControlPaint.DrawSizeGrip(e.Graphics, this.BackColor, rc);
             rc = new Rectangle(0, 0, this.ClientSize.Width, cCaption);
             e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
-            ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
+
+            ControlPaint.DrawBorder(e.Graphics, ClientRectangle, Color.Black, ButtonBorderStyle.Solid);     // Draws borders
         }
 
+        // Resize
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x84)
@@ -63,6 +63,7 @@ namespace ImageProcessing
             Application.Exit();
         }
 
+        // Drag Window
         private void panelWindow_MouseDown(object sender, MouseEventArgs e)
         {
             drag = true;
@@ -84,6 +85,7 @@ namespace ImageProcessing
             drag = false;
         }
 
+        // Fullscreen/Normal window mode
         private void buttonFullScreen_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -98,14 +100,16 @@ namespace ImageProcessing
             }
         }
 
+        // Minimize window
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        // Load Image to pictureBox
         private void buttonSelectImg_Click(object sender, EventArgs e)
         {
-            openFileDialogImg.Reset();
+            openFileDialogImg.Reset();  // Resets openDialog.FileName
             this.openFileDialogImg.ShowDialog();
             path = openFileDialogImg.FileName;
             try

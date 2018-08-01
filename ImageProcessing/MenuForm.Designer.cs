@@ -34,13 +34,13 @@
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panelWindow = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonSelectImg = new System.Windows.Forms.Button();
             this.openFileDialogImg = new System.Windows.Forms.OpenFileDialog();
             this.pictureBoxImg = new System.Windows.Forms.PictureBox();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelWindow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -124,6 +124,16 @@
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "ImagePro";
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.Image = global::ImageProcessing.Properties.Resources.ImageProBar;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(12, 5);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxIcon.TabIndex = 2;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // buttonSelectImg
             // 
             this.buttonSelectImg.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -156,16 +166,6 @@
             this.pictureBoxImg.TabIndex = 2;
             this.pictureBoxImg.TabStop = false;
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.Image = global::ImageProcessing.Properties.Resources.ImageProBar;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(12, 5);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxIcon.TabIndex = 2;
-            this.pictureBoxIcon.TabStop = false;
-            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -176,6 +176,7 @@
             this.Controls.Add(this.pictureBoxImg);
             this.Controls.Add(this.buttonSelectImg);
             this.Controls.Add(this.panelWindow);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -184,8 +185,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelWindow.ResumeLayout(false);
             this.panelWindow.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
