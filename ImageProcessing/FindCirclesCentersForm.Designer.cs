@@ -118,9 +118,11 @@
             // 
             // pictureBoxFindCC
             // 
-            this.pictureBoxFindCC.Location = new System.Drawing.Point(12, 41);
+            this.pictureBoxFindCC.BackColor = System.Drawing.Color.White;
+            this.pictureBoxFindCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxFindCC.Location = new System.Drawing.Point(27, 51);
             this.pictureBoxFindCC.Name = "pictureBoxFindCC";
-            this.pictureBoxFindCC.Size = new System.Drawing.Size(500, 500);
+            this.pictureBoxFindCC.Size = new System.Drawing.Size(480, 480);
             this.pictureBoxFindCC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFindCC.TabIndex = 3;
             this.pictureBoxFindCC.TabStop = false;
@@ -145,19 +147,23 @@
             // 
             // listBoxCenters
             // 
+            this.listBoxCenters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listBoxCenters.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxCenters.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCenters.ForeColor = System.Drawing.SystemColors.Control;
             this.listBoxCenters.FormattingEnabled = true;
             this.listBoxCenters.Location = new System.Drawing.Point(584, 98);
             this.listBoxCenters.Name = "listBoxCenters";
-            this.listBoxCenters.Size = new System.Drawing.Size(120, 381);
+            this.listBoxCenters.Size = new System.Drawing.Size(120, 377);
             this.listBoxCenters.TabIndex = 5;
             // 
             // labelCenters
             // 
             this.labelCenters.AutoSize = true;
-            this.labelCenters.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCenters.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCenters.Location = new System.Drawing.Point(621, 63);
             this.labelCenters.Name = "labelCenters";
-            this.labelCenters.Size = new System.Drawing.Size(45, 13);
+            this.labelCenters.Size = new System.Drawing.Size(46, 13);
             this.labelCenters.TabIndex = 6;
             this.labelCenters.Text = "Centers";
             // 

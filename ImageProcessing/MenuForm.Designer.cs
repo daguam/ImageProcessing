@@ -54,7 +54,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonExit.Location = new System.Drawing.Point(901, 3);
+            this.buttonExit.Location = new System.Drawing.Point(548, 3);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(29, 25);
             this.buttonExit.TabIndex = 0;
@@ -71,7 +71,7 @@
             this.buttonFullScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFullScreen.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonFullScreen.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonFullScreen.Location = new System.Drawing.Point(864, 3);
+            this.buttonFullScreen.Location = new System.Drawing.Point(511, 3);
             this.buttonFullScreen.Name = "buttonFullScreen";
             this.buttonFullScreen.Size = new System.Drawing.Size(29, 25);
             this.buttonFullScreen.TabIndex = 0;
@@ -88,7 +88,7 @@
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonMinimize.Location = new System.Drawing.Point(828, 3);
+            this.buttonMinimize.Location = new System.Drawing.Point(475, 3);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(29, 25);
             this.buttonMinimize.TabIndex = 0;
@@ -108,7 +108,7 @@
             this.panelWindow.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
             this.panelWindow.Name = "panelWindow";
-            this.panelWindow.Size = new System.Drawing.Size(933, 35);
+            this.panelWindow.Size = new System.Drawing.Size(580, 35);
             this.panelWindow.TabIndex = 1;
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
@@ -144,7 +144,7 @@
             this.buttonSelectImg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonSelectImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSelectImg.ForeColor = System.Drawing.Color.White;
-            this.buttonSelectImg.Location = new System.Drawing.Point(420, 70);
+            this.buttonSelectImg.Location = new System.Drawing.Point(248, 69);
             this.buttonSelectImg.Name = "buttonSelectImg";
             this.buttonSelectImg.Size = new System.Drawing.Size(84, 25);
             this.buttonSelectImg.TabIndex = 0;
@@ -165,7 +165,7 @@
             this.buttonFindCenters.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonFindCenters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFindCenters.ForeColor = System.Drawing.Color.White;
-            this.buttonFindCenters.Location = new System.Drawing.Point(420, 510);
+            this.buttonFindCenters.Location = new System.Drawing.Point(248, 625);
             this.buttonFindCenters.Name = "buttonFindCenters";
             this.buttonFindCenters.Size = new System.Drawing.Size(84, 25);
             this.buttonFindCenters.TabIndex = 0;
@@ -176,10 +176,11 @@
             // pictureBoxImg
             // 
             this.pictureBoxImg.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBoxImg.BackColor = System.Drawing.Color.White;
             this.pictureBoxImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxImg.Location = new System.Drawing.Point(163, 120);
+            this.pictureBoxImg.Location = new System.Drawing.Point(50, 120);
             this.pictureBoxImg.Name = "pictureBoxImg";
-            this.pictureBoxImg.Size = new System.Drawing.Size(606, 350);
+            this.pictureBoxImg.Size = new System.Drawing.Size(480, 480);
             this.pictureBoxImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxImg.TabIndex = 2;
             this.pictureBoxImg.TabStop = false;
@@ -190,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(933, 600);
+            this.ClientSize = new System.Drawing.Size(580, 670);
             this.Controls.Add(this.pictureBoxImg);
             this.Controls.Add(this.buttonFindCenters);
             this.Controls.Add(this.buttonSelectImg);
@@ -199,7 +200,7 @@
             this.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(933, 600);
+            this.MinimumSize = new System.Drawing.Size(580, 670);
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImagePro";
