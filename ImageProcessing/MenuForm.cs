@@ -127,6 +127,7 @@ namespace ImageProcessing
                 if (correct != string.Empty)
                 {
                     pictureBoxImg.Load(correct);    // Reloads current image
+                    path = correct;
                 }
                 else
                 {
@@ -142,7 +143,8 @@ namespace ImageProcessing
             {
                 if (correct != string.Empty)
                 {
-                        pictureBoxImg.Load(correct);    //Reloads current image
+                    pictureBoxImg.Load(correct);    //Reloads current image
+                    path = correct;
                 }
                     CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
                     DialogResult result = msgBoxWindow.Show("File Format is not valid!");
