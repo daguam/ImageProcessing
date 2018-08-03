@@ -120,14 +120,7 @@ namespace ImageProcessing
                 correct = path;
             }
             catch (FileNotFoundException)
-            {
-                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
-                DialogResult result = msgBoxWindow.Show("Image was not selected!");
-                if (result == DialogResult.OK)
-                {
-                    msgBoxWindow.Close();
-
-                }
+            {               
             }
             catch (InvalidOperationException)
             {
@@ -183,6 +176,15 @@ namespace ImageProcessing
                     msgBoxWindow.Close();
                 }
 
+            }
+            catch (ArgumentException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
             }
         }
     }
