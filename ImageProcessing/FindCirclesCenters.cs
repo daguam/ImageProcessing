@@ -11,8 +11,8 @@ namespace ImageProcessing
     {
         Bitmap img, proImg;
         List<Point> pointList;
-        Pen bluePen = new Pen(Color.Blue, 3);
-        System.Drawing.SolidBrush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
+        Pen bluePen = new Pen(Color.LightBlue, 3);
+        System.Drawing.SolidBrush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.LightBlue);
         System.Drawing.SolidBrush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
         int x_i, y_i;   // Inicial X and Y values for getPixel
         int x_c, y_c;   // Center values for X and Y

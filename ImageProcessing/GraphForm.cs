@@ -48,7 +48,7 @@ namespace ImageProcessing
             }
             graph.InitializeGraph(pointList);
             graph.CompleteGraph();
-            using (var graphics = Graphics.FromImage(imgGraph))
+            using (var graphics = Graphics.FromImage(imgGraph)) // Draws graph
             {
                 foreach (Node n in graph.NodeList)
                 {
@@ -59,13 +59,13 @@ namespace ImageProcessing
                 }
                 foreach (Node n in graph.NodeList)
                 {
-                    int recenter = 15;
+                    int recenter = 15;  // Adjust string position
                     Point centerPoint = new Point(n.NodePoint.X - recenter, n.NodePoint.Y - recenter);
                     graphics.DrawString(n.NodeNum.ToString(), drawFont, Brushes.White, centerPoint);
                 }
             }
             pictureBoxGraph.Image = imgGraph;
-            foreach (Node n in graph.NodeList)
+            foreach (Node n in graph.NodeList)  // Adds nodes and arcs to treeView component
             {
                 treeViewGraph.Nodes.Add("Node " + n.ToString());
                 foreach (Arc a in n.ArcList)
@@ -75,6 +75,7 @@ namespace ImageProcessing
                 i++;
             }
         }
+        // End of constructor
 
         // Access modifiers for GraphForm atributes
 
@@ -83,6 +84,7 @@ namespace ImageProcessing
             get { return fail; }
         }
 
+        // GraphForm methods
 
         protected override void OnPaint(PaintEventArgs e)
         {
