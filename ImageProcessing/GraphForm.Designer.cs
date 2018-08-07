@@ -35,6 +35,9 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.pictureBoxGraph = new System.Windows.Forms.PictureBox();
+            this.treeViewGraph = new System.Windows.Forms.TreeView();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonShortest = new System.Windows.Forms.Button();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
@@ -124,11 +127,59 @@
             this.pictureBoxGraph.TabIndex = 4;
             this.pictureBoxGraph.TabStop = false;
             // 
+            // treeViewGraph
+            // 
+            this.treeViewGraph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.treeViewGraph.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewGraph.Location = new System.Drawing.Point(860, 54);
+            this.treeViewGraph.Name = "treeViewGraph";
+            this.treeViewGraph.Size = new System.Drawing.Size(302, 443);
+            this.treeViewGraph.TabIndex = 5;
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonBack.AutoSize = true;
+            this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBack.ForeColor = System.Drawing.Color.White;
+            this.buttonBack.Location = new System.Drawing.Point(1145, 843);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(43, 25);
+            this.buttonBack.TabIndex = 6;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // buttonShortest
+            // 
+            this.buttonShortest.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonShortest.AutoSize = true;
+            this.buttonShortest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonShortest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonShortest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonShortest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShortest.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonShortest.ForeColor = System.Drawing.Color.White;
+            this.buttonShortest.Location = new System.Drawing.Point(910, 843);
+            this.buttonShortest.Name = "buttonShortest";
+            this.buttonShortest.Size = new System.Drawing.Size(196, 25);
+            this.buttonShortest.TabIndex = 6;
+            this.buttonShortest.Text = "Shortest Path Containing 4 Nodes";
+            this.buttonShortest.UseVisualStyleBackColor = false;
+            this.buttonShortest.Click += new System.EventHandler(this.buttonShortest_Click);
+            // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 880);
+            this.Controls.Add(this.buttonShortest);
+            this.Controls.Add(this.buttonBack);
+            this.Controls.Add(this.treeViewGraph);
             this.Controls.Add(this.pictureBoxGraph);
             this.Controls.Add(this.panelWindow);
             this.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,6 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -153,5 +205,8 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.PictureBox pictureBoxGraph;
+        private System.Windows.Forms.TreeView treeViewGraph;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Button buttonShortest;
     }
 }

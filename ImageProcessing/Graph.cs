@@ -18,6 +18,7 @@ namespace ImageProcessing
         public Graph()
         {
             nodeList = new List<Node>();
+            shortestPath = new List<Node>();
         }
 
         // Access modifiers for graph atributes
@@ -25,6 +26,11 @@ namespace ImageProcessing
         public List<Node> NodeList
         {
             get { return nodeList; }
+        }
+
+        public List<Node> ShortestPath
+        {
+            get { return shortestPath; }
         }
 
         // Graph methods

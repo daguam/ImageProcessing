@@ -17,14 +17,15 @@ namespace ImageProcessing
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
         int mouseX;
         int mouseY;
-        Bitmap img;
+        Bitmap imgGraph;
         List<Point> pointList;
         Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
+        Pen redPen = new Pen(Color.Red, 6);
 
         public GraphForm(Bitmap img)
         {
             this.graph = new Graph();
-            this.img = new Bitmap(img);
+            this.imgGraph = new Bitmap(img);
             this.pointList = new List<Point>();
             InitializeComponent();
             FindCirclesCenters findCC = new FindCirclesCenters(img, pointList);
@@ -44,7 +45,7 @@ namespace ImageProcessing
             }
             graph.InitializeGraph(pointList);
             graph.CompleteGraph();
-            using (var graphics = Graphics.FromImage(img))
+            using (var graphics = Graphics.FromImage(imgGraph))
             {
                 foreach (Node n in graph.NodeList)
                 {
@@ -60,7 +61,7 @@ namespace ImageProcessing
                     graphics.DrawString(n.NodeNum.ToString(), drawFont, Brushes.White, centerPoint);
                 }
             }
-            pictureBoxGraph.Image = img;
+            pictureBoxGraph.Image = imgGraph;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -100,6 +101,23 @@ namespace ImageProcessing
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // ShortestPath call and draw
+        private void buttonShortest_Click(object sender, EventArgs e)
+        {
+            graph.BruteForceShortest();
+            if (graph.ShortestPath.Count > 3)
+            {
+                using (var graphics = Graphics.FromImage(imgGraph))
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        graphics.DrawLine(redPen, graph.ShortestPath[i].NodePoint, graph.ShortestPath[i+1].NodePoint);
+                    }
+                }
+                pictureBoxGraph.Image = imgGraph;
+            }
         }
 
         // Access modifier for fail
