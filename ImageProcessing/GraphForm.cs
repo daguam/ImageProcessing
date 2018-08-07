@@ -15,19 +15,22 @@ namespace ImageProcessing
         Graph graph;
         Boolean drag;
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
+        Boolean shortestFlag = false;   // Flag used to prevent redraw for shortest path
         int mouseX;
         int mouseY;
         Bitmap imgGraph;
         List<Point> pointList;
         Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
-        Pen redPen = new Pen(Color.Red, 6);
+        Pen transparentPen = new Pen(Color.FromArgb (120, 138, 43, 223), 10);
 
+        // Window constructor
         public GraphForm(Bitmap img)
         {
             this.graph = new Graph();
             this.imgGraph = new Bitmap(img);
             this.pointList = new List<Point>();
             InitializeComponent();
+            int i = 0;  // index for treeView component
             FindCirclesCenters findCC = new FindCirclesCenters(img, pointList);
             try
             {
@@ -62,7 +65,24 @@ namespace ImageProcessing
                 }
             }
             pictureBoxGraph.Image = imgGraph;
+            foreach (Node n in graph.NodeList)
+            {
+                treeViewGraph.Nodes.Add("Node " + n.ToString());
+                foreach (Arc a in n.ArcList)
+                {
+                    treeViewGraph.Nodes[i].Nodes.Add("Arc " + a.ArcNode.ToString() + "  (Weight:\t" + a.ArcWeight.ToString() + ")");
+                }
+                i++;
+            }
         }
+
+        // Access modifiers for GraphForm atributes
+
+        public Boolean Fail
+        {
+            get { return fail; }
+        }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -106,24 +126,33 @@ namespace ImageProcessing
         // ShortestPath call and draw
         private void buttonShortest_Click(object sender, EventArgs e)
         {
-            graph.BruteForceShortest();
-            if (graph.ShortestPath.Count > 3)
+            if (shortestFlag == false)
             {
-                using (var graphics = Graphics.FromImage(imgGraph))
+                graph.BruteForceShortest();
+                if (graph.ShortestPath.Count > 3)
                 {
-                    for (int i = 0; i < 3; i++)
+                    using (var graphics = Graphics.FromImage(imgGraph))
                     {
-                        graphics.DrawLine(redPen, graph.ShortestPath[i].NodePoint, graph.ShortestPath[i+1].NodePoint);
+                        for (int i = 0; i < 3; i++)
+                        {
+                            graphics.DrawLine(transparentPen, graph.ShortestPath[i].NodePoint, graph.ShortestPath[i + 1].NodePoint);
+                        }
+                    }
+                    pictureBoxGraph.Image = imgGraph;
+                    shortestFlag = true;
+                    labelShortestPath.Visible = true;
+                    labelShortestPath.Text += graph.MinWeight;
+                }
+                else
+                {
+                    CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                    DialogResult result = msgBoxWindow.Show("Graph must have at least 4 nodes!");
+                    if (result == DialogResult.OK)
+                    {
+                        msgBoxWindow.Close();
                     }
                 }
-                pictureBoxGraph.Image = imgGraph;
             }
-        }
-
-        // Access modifier for fail
-        public Boolean Fail
-        {
-            get { return fail; }
         }
     }
 }

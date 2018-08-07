@@ -38,9 +38,13 @@
             this.treeViewGraph = new System.Windows.Forms.TreeView();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonShortest = new System.Windows.Forms.Button();
+            this.labelGraphInfo = new System.Windows.Forms.Label();
+            this.labelShortestPath = new System.Windows.Forms.Label();
+            this.panelGraph = new System.Windows.Forms.Panel();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
+            this.panelGraph.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelWindow
@@ -118,6 +122,9 @@
             // 
             // pictureBoxGraph
             // 
+            this.pictureBoxGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGraph.BackColor = System.Drawing.Color.White;
             this.pictureBoxGraph.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxGraph.Location = new System.Drawing.Point(27, 54);
@@ -131,7 +138,7 @@
             // 
             this.treeViewGraph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.treeViewGraph.ForeColor = System.Drawing.SystemColors.Control;
-            this.treeViewGraph.Location = new System.Drawing.Point(860, 54);
+            this.treeViewGraph.Location = new System.Drawing.Point(860, 94);
             this.treeViewGraph.Name = "treeViewGraph";
             this.treeViewGraph.Size = new System.Drawing.Size(302, 443);
             this.treeViewGraph.TabIndex = 5;
@@ -164,7 +171,7 @@
             this.buttonShortest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShortest.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShortest.ForeColor = System.Drawing.Color.White;
-            this.buttonShortest.Location = new System.Drawing.Point(910, 843);
+            this.buttonShortest.Location = new System.Drawing.Point(910, 577);
             this.buttonShortest.Name = "buttonShortest";
             this.buttonShortest.Size = new System.Drawing.Size(196, 25);
             this.buttonShortest.TabIndex = 6;
@@ -172,11 +179,42 @@
             this.buttonShortest.UseVisualStyleBackColor = false;
             this.buttonShortest.Click += new System.EventHandler(this.buttonShortest_Click);
             // 
+            // labelGraphInfo
+            // 
+            this.labelGraphInfo.AutoSize = true;
+            this.labelGraphInfo.Location = new System.Drawing.Point(979, 55);
+            this.labelGraphInfo.Name = "labelGraphInfo";
+            this.labelGraphInfo.Size = new System.Drawing.Size(63, 13);
+            this.labelGraphInfo.TabIndex = 7;
+            this.labelGraphInfo.Text = "Graph Info";
+            // 
+            // labelShortestPath
+            // 
+            this.labelShortestPath.AutoEllipsis = true;
+            this.labelShortestPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelShortestPath.Location = new System.Drawing.Point(0, 0);
+            this.labelShortestPath.Name = "labelShortestPath";
+            this.labelShortestPath.Size = new System.Drawing.Size(302, 41);
+            this.labelShortestPath.TabIndex = 8;
+            this.labelShortestPath.Text = "Shortest path weigh:  ";
+            this.labelShortestPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelShortestPath.Visible = false;
+            // 
+            // panelGraph
+            // 
+            this.panelGraph.Controls.Add(this.labelShortestPath);
+            this.panelGraph.Location = new System.Drawing.Point(860, 620);
+            this.panelGraph.Name = "panelGraph";
+            this.panelGraph.Size = new System.Drawing.Size(302, 41);
+            this.panelGraph.TabIndex = 9;
+            // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 880);
+            this.Controls.Add(this.panelGraph);
+            this.Controls.Add(this.labelGraphInfo);
             this.Controls.Add(this.buttonShortest);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.treeViewGraph);
@@ -192,6 +230,7 @@
             this.panelWindow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).EndInit();
+            this.panelGraph.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +247,8 @@
         private System.Windows.Forms.TreeView treeViewGraph;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonShortest;
+        private System.Windows.Forms.Label labelGraphInfo;
+        private System.Windows.Forms.Label labelShortestPath;
+        private System.Windows.Forms.Panel panelGraph;
     }
 }

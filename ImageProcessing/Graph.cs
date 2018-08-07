@@ -33,6 +33,11 @@ namespace ImageProcessing
             get { return shortestPath; }
         }
 
+        public double MinWeight
+        {
+            get { return minWeight; }
+        }
+
         // Graph methods
 
         // Creates nodes from the list of points with circle centers
