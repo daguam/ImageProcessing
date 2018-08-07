@@ -94,12 +94,12 @@ namespace ImageProcessing
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                buttonFullScreen.Text = "2";
+                buttonFullScreen.Text = "2";    //Marlet Font for Normal icon
             }
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                buttonFullScreen.Text = "1";
+                buttonFullScreen.Text = "1";    //Marlet Font for Maximize icon
             }
         }
 
@@ -128,16 +128,7 @@ namespace ImageProcessing
                 {
                     pictureBoxImg.Load(correct);    // Reloads current image
                     path = correct;
-                }
-                else
-                {
-                    CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
-                    DialogResult result = msgBoxWindow.Show("Image was not selected!");
-                    if (result == DialogResult.OK)
-                    {
-                        msgBoxWindow.Close();
-                    }
-                }
+                }               
             }
             catch (ArgumentException)
             {
