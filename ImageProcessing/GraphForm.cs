@@ -10,17 +10,20 @@ using System.Windows.Forms;
 
 namespace ImageProcessing
 {
-    public partial class FindCirclesCentersForm : Form
+    public partial class GraphForm : Form
     {
+        Graph graph;
         Boolean drag;
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
         int mouseX;
         int mouseY;
         Bitmap img;
         List<Point> pointList;
+        Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
 
-        public FindCirclesCentersForm(Bitmap img)
+        public GraphForm(Bitmap img)
         {
+            this.graph = new Graph();
             this.img = new Bitmap(img);
             this.pointList = new List<Point>();
             InitializeComponent();
@@ -39,15 +42,25 @@ namespace ImageProcessing
                     msgBoxWindow.Close();
                 }
             }
-            this.pictureBoxFindCC.Image = findCC.ProImage;  // Gets image from findCC and sets it to the pictureBox
-            listBoxCenters.Items.Clear();
-
-            // Adds points to the listBox
-            foreach (Point p in pointList)
+            graph.InitializeGraph(pointList);
+            graph.CompleteGraph();
+            using (var graphics = Graphics.FromImage(img))
             {
-                listBoxCenters.Items.Add(p);
+                foreach (Node n in graph.NodeList)
+                {
+                    foreach (Arc a in n.ArcList)
+                    {
+                        graphics.DrawLine(Pens.Black, n.NodePoint, a.ArcNode.NodePoint);
+                    }
+                }
+                foreach (Node n in graph.NodeList)
+                {
+                    int recenter = 15;
+                    Point centerPoint = new Point(n.NodePoint.X - recenter, n.NodePoint.Y - recenter);
+                    graphics.DrawString(n.NodeNum.ToString(), drawFont, Brushes.White, centerPoint);
+                }
             }
-            pointList.Clear();
+            pictureBoxGraph.Image = img;
         }
 
         protected override void OnPaint(PaintEventArgs e)

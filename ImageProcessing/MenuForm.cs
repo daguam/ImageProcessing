@@ -20,7 +20,7 @@ namespace ImageProcessing
         private const int cCaption = 32;   // Caption bar height;
         string path = null;
         string correct = string.Empty;
-        List<Point> pointList = new List<Point>();  // List where centers are stored
+        //List<Point> pointList = new List<Point>();  // List where centers are stored
 
         public MenuForm()
         {
@@ -94,12 +94,12 @@ namespace ImageProcessing
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                buttonFullScreen.Text = "2";    //Marlet Font for Normal icon
+                buttonFullScreen.Text = "2";    // Marlet Font for Normal icon
             }
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                buttonFullScreen.Text = "1";    //Marlet Font for Maximize icon
+                buttonFullScreen.Text = "1";    // Marlet Font for Maximize icon
             }
         }
 
@@ -134,7 +134,7 @@ namespace ImageProcessing
             {
                 if (correct != string.Empty)
                 {
-                    pictureBoxImg.Load(correct);    //Reloads current image
+                    pictureBoxImg.Load(correct);    // Reloads current image
                     path = correct;
                 }
                     CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
@@ -154,10 +154,43 @@ namespace ImageProcessing
             try
             {
                 Bitmap img = new Bitmap(path);
-                FindCirclesCentersForm findCentersWindow = new FindCirclesCentersForm(img, pointList);
+                FindCirclesCentersForm findCentersWindow = new FindCirclesCentersForm(img);
                 if (findCentersWindow.Fail == false)
                 {
                     findCentersWindow.ShowDialog();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+
+            }
+            catch (ArgumentException)
+            {
+                CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                DialogResult result = msgBoxWindow.Show("Image was not selected!");
+                if (result == DialogResult.OK)
+                {
+                    msgBoxWindow.Close();
+                }
+            }
+        }
+
+        // Open Graph window if image processing is succesfull
+        private void buttonGraph_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap img = new Bitmap(path);
+                GraphForm graphWindow = new GraphForm(img);
+                if (graphWindow.Fail == false)
+                {
+                    graphWindow.ShowDialog();
                 }
             }
             catch (ArgumentNullException)

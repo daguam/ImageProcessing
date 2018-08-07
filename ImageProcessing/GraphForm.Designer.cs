@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessing
 {
-    partial class FindCirclesCentersForm
+    partial class GraphForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCirclesCentersForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphForm));
             this.panelWindow = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
-            this.pictureBoxFindCC = new System.Windows.Forms.PictureBox();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.listBoxCenters = new System.Windows.Forms.ListBox();
-            this.labelCenters = new System.Windows.Forms.Label();
+            this.pictureBoxGraph = new System.Windows.Forms.PictureBox();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFindCC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // panelWindow
@@ -53,8 +50,8 @@
             this.panelWindow.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
             this.panelWindow.Name = "panelWindow";
-            this.panelWindow.Size = new System.Drawing.Size(774, 35);
-            this.panelWindow.TabIndex = 2;
+            this.panelWindow.Size = new System.Drawing.Size(1200, 35);
+            this.panelWindow.TabIndex = 3;
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
             this.panelWindow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseUp);
@@ -66,9 +63,9 @@
             this.labelTitle.ForeColor = System.Drawing.SystemColors.Control;
             this.labelTitle.Location = new System.Drawing.Point(45, 10);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(168, 13);
+            this.labelTitle.Size = new System.Drawing.Size(99, 13);
             this.labelTitle.TabIndex = 2;
-            this.labelTitle.Text = "ImagePro - Find Circles Centers";
+            this.labelTitle.Text = "ImagePro - Graph";
             // 
             // pictureBoxIcon
             // 
@@ -90,7 +87,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonExit.Location = new System.Drawing.Point(742, 3);
+            this.buttonExit.Location = new System.Drawing.Point(1168, 3);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(29, 25);
             this.buttonExit.TabIndex = 0;
@@ -107,7 +104,7 @@
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonMinimize.Location = new System.Drawing.Point(707, 3);
+            this.buttonMinimize.Location = new System.Drawing.Point(1133, 3);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(29, 25);
             this.buttonMinimize.TabIndex = 0;
@@ -116,78 +113,35 @@
             this.buttonMinimize.UseVisualStyleBackColor = false;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
             // 
-            // pictureBoxFindCC
+            // pictureBoxGraph
             // 
-            this.pictureBoxFindCC.BackColor = System.Drawing.Color.White;
-            this.pictureBoxFindCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxFindCC.Location = new System.Drawing.Point(27, 54);
-            this.pictureBoxFindCC.Name = "pictureBoxFindCC";
-            this.pictureBoxFindCC.Size = new System.Drawing.Size(480, 480);
-            this.pictureBoxFindCC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFindCC.TabIndex = 3;
-            this.pictureBoxFindCC.TabStop = false;
+            this.pictureBoxGraph.BackColor = System.Drawing.Color.White;
+            this.pictureBoxGraph.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxGraph.Location = new System.Drawing.Point(27, 54);
+            this.pictureBoxGraph.Name = "pictureBoxGraph";
+            this.pictureBoxGraph.Size = new System.Drawing.Size(800, 800);
+            this.pictureBoxGraph.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGraph.TabIndex = 4;
+            this.pictureBoxGraph.TabStop = false;
             // 
-            // buttonBack
+            // GraphForm
             // 
-            this.buttonBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonBack.AutoSize = true;
-            this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBack.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBack.ForeColor = System.Drawing.Color.White;
-            this.buttonBack.Location = new System.Drawing.Point(705, 516);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(43, 25);
-            this.buttonBack.TabIndex = 4;
-            this.buttonBack.Text = "Back";
-            this.buttonBack.UseVisualStyleBackColor = false;
-            this.buttonBack.Click += new System.EventHandler(this.buttonExit_Click);
-            // 
-            // listBoxCenters
-            // 
-            this.listBoxCenters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listBoxCenters.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxCenters.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxCenters.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBoxCenters.FormattingEnabled = true;
-            this.listBoxCenters.Location = new System.Drawing.Point(584, 98);
-            this.listBoxCenters.Name = "listBoxCenters";
-            this.listBoxCenters.Size = new System.Drawing.Size(120, 377);
-            this.listBoxCenters.TabIndex = 5;
-            // 
-            // labelCenters
-            // 
-            this.labelCenters.AutoSize = true;
-            this.labelCenters.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCenters.Location = new System.Drawing.Point(621, 63);
-            this.labelCenters.Name = "labelCenters";
-            this.labelCenters.Size = new System.Drawing.Size(46, 13);
-            this.labelCenters.TabIndex = 6;
-            this.labelCenters.Text = "Centers";
-            // 
-            // FindCirclesCentersForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 554);
-            this.Controls.Add(this.labelCenters);
-            this.Controls.Add(this.listBoxCenters);
-            this.Controls.Add(this.buttonBack);
-            this.Controls.Add(this.pictureBoxFindCC);
+            this.ClientSize = new System.Drawing.Size(1200, 880);
+            this.Controls.Add(this.pictureBoxGraph);
             this.Controls.Add(this.panelWindow);
+            this.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FindCirclesCentersForm";
+            this.Name = "GraphForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FindCenters";
+            this.Text = "Graph";
             this.panelWindow.ResumeLayout(false);
             this.panelWindow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFindCC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -198,9 +152,6 @@
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonMinimize;
-        private System.Windows.Forms.PictureBox pictureBoxFindCC;
-        private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.ListBox listBoxCenters;
-        private System.Windows.Forms.Label labelCenters;
+        private System.Windows.Forms.PictureBox pictureBoxGraph;
     }
 }

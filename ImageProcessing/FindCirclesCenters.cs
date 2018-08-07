@@ -37,8 +37,6 @@ namespace ImageProcessing
         // Draws and fills circles
         public void DrawCircle(Bitmap img, Point p1, int d)
         {
-            Pen bluePen = new Pen(Color.Blue, 3);
-            System.Drawing.SolidBrush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
             using (var graphics = Graphics.FromImage(proImg))
             {
                 graphics.DrawEllipse(bluePen, p1.X, p1.Y, d, d);
