@@ -10,6 +10,9 @@ namespace ImageProcessing
     public class Graph
     {
         List<Node> nodeList;
+        List<Node> shortestPath;
+        double minWeight = double.MaxValue;
+        double possible;
 
         // Graph constructor method
         public Graph()
@@ -56,8 +59,43 @@ namespace ImageProcessing
             }
         }
 
-        // Brute force algorithm for shortest path
-    }
+        // Brute force algorithm for shortest path that contains 4 nodes
+        public void BruteForceShortest()
+        {
+            foreach (Node n in nodeList)
+            {
+                foreach (Arc a in n.ArcList)
+                {
+                    foreach (Arc a2 in a.ArcNode.ArcList)
+                    {
+                        foreach (Arc a3 in a.ArcNode.ArcList)
+                        {
+                            if(n.NodeNum != a.ArcNode.NodeNum && n.NodeNum != a2.ArcNode.NodeNum && n.NodeNum != a3.ArcNode.NodeNum)
+                            {
+                                if (a.ArcNode.NodeNum != a2.ArcNode.NodeNum && a.ArcNode.NodeNum != a3.ArcNode.NodeNum)
+                                {
+                                    if (a2.ArcNode.NodeNum != a3.ArcNode.NodeNum)
+                                    {
+                                        possible = a.ArcWeight + a2.ArcWeight + a3.ArcWeight;
+                                        if (possible < minWeight)
+                                        {
+                                            shortestPath.Clear();
+                                            minWeight = possible;
+                                            shortestPath.Add(n);
+                                            shortestPath.Add(a.ArcNode);
+                                            shortestPath.Add(a2.ArcNode);
+                                            shortestPath.Add(a3.ArcNode);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }// End graph class
+
     public class Node
     {
         List<Arc> arcList;
