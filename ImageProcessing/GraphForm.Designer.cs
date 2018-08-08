@@ -133,6 +133,7 @@
             this.pictureBoxGraph.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxGraph.TabIndex = 4;
             this.pictureBoxGraph.TabStop = false;
+            this.pictureBoxGraph.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxGraph_MouseDoubleClick);
             // 
             // treeViewGraph
             // 

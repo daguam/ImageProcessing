@@ -18,13 +18,15 @@ namespace ImageProcessing
         int mouseY;
         Bitmap img;
         List<Point> pointList;
+        List<int> radiusList;
 
         public FindCirclesCentersForm(Bitmap img)
         {
             this.img = new Bitmap(img);
             this.pointList = new List<Point>();
+            this.radiusList = new List<int>();
             InitializeComponent();
-            FindCirclesCenters findCC = new FindCirclesCenters(img, pointList);
+            FindCirclesCenters findCC = new FindCirclesCenters(img, pointList, radiusList);
             try
             {
                 findCC.FindCircle();

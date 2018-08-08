@@ -51,12 +51,12 @@ namespace ImageProcessing
         // Graph methods
 
         // Creates nodes from the list of points with circle centers
-        public void InitializeGraph(List<Point> pointList)
+        public void InitializeGraph(List<Point> pointList, List<int> radiusList)
         {
             int i = 1;
             foreach (Point p in pointList)
             {
-                Node n = new Node(p, i);
+                Node n = new Node(p, i, radiusList[i-1]);
                 nodeList.Add(n);
                 i++;
             }
@@ -361,13 +361,15 @@ namespace ImageProcessing
         List<Arc> arcList;
         Point nodePoint;
         int nodeNum;
+        int nodeRadius;
 
         // Node constructor method
-        public Node (Point nodePoint, int nodeNum)
+        public Node (Point nodePoint, int nodeNum, int nodeRadius)
         {
             arcList = new List<Arc>();
             this.nodePoint = nodePoint;
             this.nodeNum = nodeNum;
+            this.nodeRadius = nodeRadius;
         }
 
         // Access modifiers for node atributes
@@ -385,6 +387,11 @@ namespace ImageProcessing
         public int NodeNum
         {
             get { return nodeNum; }
+        }
+
+        public int NodeRadius
+        {
+            get { return nodeRadius; }
         }
 
         // Node methods

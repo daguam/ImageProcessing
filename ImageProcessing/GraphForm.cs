@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace ImageProcessing
 {
@@ -18,8 +19,11 @@ namespace ImageProcessing
         Boolean shortestFlag = false;   // Flag used to prevent redraw for shortest path
         int mouseX;
         int mouseY;
+        int xDisplacement = 0, yDisplacement = 0;
+        double wF, hF, rF;
         Bitmap imgGraph;
         List<Point> pointList;
+        List<int> radiusList;
         Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
         Pen transparentPen = new Pen(Color.FromArgb (120, 138, 43, 223), 10);
 
@@ -29,9 +33,22 @@ namespace ImageProcessing
             this.graph = new Graph();
             this.imgGraph = new Bitmap(img);
             this.pointList = new List<Point>();
+            this.radiusList = new List<int>();
             InitializeComponent();
+            wF = (double)img.Width / pictureBoxGraph.Width;
+            hF = (double)img.Height / pictureBoxGraph.Height;
+            if (wF > hF)
+            {
+                rF = wF;
+                yDisplacement = (int)(pictureBoxGraph.Height - (img.Height / rF)) / 2;
+            }
+            else
+            {
+                rF = hF;
+                xDisplacement = (int)(pictureBoxGraph.Width - (img.Width / rF)) / 2;
+            }
             int i = 0;  // index for treeView component
-            FindCirclesCenters findCC = new FindCirclesCenters(img, pointList);
+            FindCirclesCenters findCC = new FindCirclesCenters(img, pointList, radiusList);
             try
             {
                 findCC.FindCircle();
@@ -46,7 +63,7 @@ namespace ImageProcessing
                     msgBoxWindow.Close();
                 }
             }
-            graph.InitializeGraph(pointList);
+            graph.InitializeGraph(pointList, radiusList);
             graph.GraphWithObstruction(img);
             using (var graphics = Graphics.FromImage(imgGraph)) // Draws graph
             {
@@ -113,6 +130,30 @@ namespace ImageProcessing
             drag = false;
         }
 
+        private void pictureBoxGraph_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Node found = null;
+            double graphImgX;
+            double graphImgY;
+            graphImgX = (e.X - xDisplacement) * rF;
+            graphImgY = (e.Y - yDisplacement) * rF;
+            foreach (Node n in graph.NodeList)
+            {
+                Point nodePoint = n.NodePoint;
+                if ((int)graphImgX > nodePoint.X - n.NodeRadius && (int)graphImgX < nodePoint.X + n.NodeRadius)
+                {
+                    if ((int)graphImgY > nodePoint.Y - n.NodeRadius && (int)graphImgY < nodePoint.Y + n.NodeRadius)
+                    {
+                        found = n;
+                    }
+                }
+            }
+            if (found != null)
+            {
+                MessageBox.Show(found.NodePoint.ToString());
+            }
+        }
+
         // Minimize window
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
@@ -155,6 +196,6 @@ namespace ImageProcessing
                     }
                 }
             }
-        }
+        }        
     }
 }

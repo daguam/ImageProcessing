@@ -11,6 +11,7 @@ namespace ImageProcessing
     {
         Bitmap img, proImg;
         List<Point> pointList;
+        List<int> radiusList;
         Pen bluePen = new Pen(Color.LightBlue, 3);
         System.Drawing.SolidBrush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.LightBlue);
         System.Drawing.SolidBrush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
@@ -21,11 +22,12 @@ namespace ImageProcessing
         int circleDiameter; // Circle diameter
 
         // Class constructor
-        public FindCirclesCenters(Bitmap img, List<Point> pointList)
+        public FindCirclesCenters(Bitmap img, List<Point> pointList, List<int> radiusList)
         {
             this.img = img;
             this.proImg = new Bitmap(img);
             this.pointList = pointList;
+            this.radiusList = radiusList;
         }
 
         // Access modifier for proImg
@@ -114,6 +116,7 @@ namespace ImageProcessing
             Point centerPoint = new Point(x_c, y_c);
             pointList.Add(centerPoint);
             DrawCenter(proImg, centerPoint);
+            radiusList.Add(circleDiameter / 2);
 
         }
 
