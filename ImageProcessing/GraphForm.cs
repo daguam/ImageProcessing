@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Threading;
 
 namespace ImageProcessing
 {
     public partial class GraphForm : Form
     {
         Graph graph;
+        bool flag = false;
         Boolean drag;
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
         Boolean shortestFlag = false;   // Flag used to prevent redraw for shortest path
@@ -21,11 +23,12 @@ namespace ImageProcessing
         int mouseY;
         int xDisplacement = 0, yDisplacement = 0;
         double wF, hF, rF;
-        Bitmap imgGraph;
+        Bitmap imgGraph, imgFront;
         List<Point> pointList;
         List<int> radiusList;
         Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
         Pen transparentPen = new Pen(Color.FromArgb (120, 138, 43, 223), 10);
+        Node moveNode = null;
 
         // Window constructor
         public GraphForm(Bitmap img)
@@ -34,6 +37,7 @@ namespace ImageProcessing
             this.imgGraph = new Bitmap(img);
             this.pointList = new List<Point>();
             this.radiusList = new List<int>();
+            this.imgFront = new Bitmap(imgGraph.Width, imgGraph.Height);
             InitializeComponent();
             wF = (double)img.Width / pictureBoxGraph.Width;
             hF = (double)img.Height / pictureBoxGraph.Height;
@@ -81,7 +85,8 @@ namespace ImageProcessing
                     graphics.DrawString(n.NodeNum.ToString(), drawFont, Brushes.White, centerPoint);
                 }
             }
-            pictureBoxGraph.Image = imgGraph;
+            pictureBoxGraph.BackgroundImage = imgGraph;
+            pictureBoxGraph.Image = imgFront;
             foreach (Node n in graph.NodeList)  // Adds nodes and arcs to treeView component
             {
                 treeViewGraph.Nodes.Add("Node " + n.ToString());
@@ -130,6 +135,20 @@ namespace ImageProcessing
             drag = false;
         }
 
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            flag = false;
+            shortestFlag = false;
+            labelShortestPath.Visible = false;
+            labelShortestPath.ResetText();
+            labelShortestPath.Text = "Shortest path weight: ";
+            using (var graphics = Graphics.FromImage(imgFront))
+            {
+                graphics.Clear(Color.Transparent);
+                pictureBoxGraph.Refresh();
+            }
+        }
+
         private void pictureBoxGraph_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Node found = null;
@@ -150,7 +169,36 @@ namespace ImageProcessing
             }
             if (found != null)
             {
-                MessageBox.Show(found.NodePoint.ToString());
+                Particle particle = new Particle(found);
+                if (!flag)
+                {
+                    moveNode = found;
+                    using (var graphics = Graphics.FromImage(imgFront))
+                    {
+                        graphics.FillEllipse(Brushes.LightBlue, found.NodePoint.X - 10, found.NodePoint.Y - 10, 15, 15);
+                        pictureBoxGraph.Refresh();
+                    }
+                    flag = true;
+                }
+                if(flag)
+                {
+                    foreach (Arc a in moveNode.ArcList)
+                    {
+                        if (a.ArcNode == found)
+                        {
+                            using (var graphics = Graphics.FromImage(imgFront))
+                            {
+                                foreach (Point p in a.AnimationList)
+                                {
+                                    graphics.Clear(Color.Transparent);
+                                    graphics.FillEllipse(Brushes.LightBlue, p.X - 10, p.Y - 10, 15, 15);
+                                    pictureBoxGraph.Refresh();
+                                }
+                            }
+                            moveNode = found;
+                        }
+                    }
+                }
             }
         }
 
@@ -174,14 +222,15 @@ namespace ImageProcessing
                 graph.BruteForceShortest();
                 if (graph.ShortestPath.Count > 3)
                 {
-                    using (var graphics = Graphics.FromImage(imgGraph))
+                    using (var graphics = Graphics.FromImage(imgFront))
                     {
                         for (int i = 0; i < 3; i++)
                         {
                             graphics.DrawLine(transparentPen, graph.ShortestPath[i].NodePoint, graph.ShortestPath[i + 1].NodePoint);
                         }
-                    }
-                    pictureBoxGraph.Image = imgGraph;
+                    }                    
+                    pictureBoxGraph.Image = imgFront;
+                    pictureBoxGraph.Refresh();
                     shortestFlag = true;
                     labelShortestPath.Visible = true;
                     labelShortestPath.Text += graph.MinWeight;

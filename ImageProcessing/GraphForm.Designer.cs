@@ -41,6 +41,7 @@
             this.labelGraphInfo = new System.Windows.Forms.Label();
             this.labelShortestPath = new System.Windows.Forms.Label();
             this.panelGraph = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
@@ -126,6 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGraph.BackColor = System.Drawing.Color.White;
+            this.pictureBoxGraph.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxGraph.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxGraph.Location = new System.Drawing.Point(27, 54);
             this.pictureBoxGraph.Name = "pictureBoxGraph";
@@ -209,6 +211,24 @@
             this.panelGraph.Size = new System.Drawing.Size(302, 41);
             this.panelGraph.TabIndex = 9;
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonClear.AutoSize = true;
+            this.buttonClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClear.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClear.ForeColor = System.Drawing.Color.White;
+            this.buttonClear.Location = new System.Drawing.Point(982, 726);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(45, 25);
+            this.buttonClear.TabIndex = 6;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -217,6 +237,7 @@
             this.Controls.Add(this.panelGraph);
             this.Controls.Add(this.labelGraphInfo);
             this.Controls.Add(this.buttonShortest);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.treeViewGraph);
             this.Controls.Add(this.pictureBoxGraph);
@@ -251,5 +272,6 @@
         private System.Windows.Forms.Label labelGraphInfo;
         private System.Windows.Forms.Label labelShortestPath;
         private System.Windows.Forms.Panel panelGraph;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
