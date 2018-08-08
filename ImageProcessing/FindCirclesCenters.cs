@@ -14,7 +14,7 @@ namespace ImageProcessing
         Pen bluePen = new Pen(Color.LightBlue, 3);
         System.Drawing.SolidBrush blueBrush = new System.Drawing.SolidBrush(System.Drawing.Color.LightBlue);
         System.Drawing.SolidBrush redBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-        int x_i, y_i;   // Inicial X and Y values for getPixel
+        int x_i, y_i;   // Initial X and Y values for getPixel
         int x_c, y_c;   // Center values for X and Y
         int x_f, y_f;   // Final X and Y values for getPixel
         int x_r;        // Circle radius

@@ -19,9 +19,9 @@ namespace ImageProcessing
         private const int cGrip = 16;      // Grip size
         private const int cCaption = 32;   // Caption bar height;
         string path = null;
-        string correct = string.Empty;
-        //List<Point> pointList = new List<Point>();  // List where centers are stored
+        string correct = string.Empty;        
 
+        // Window constructor
         public MenuForm()
         {
             InitializeComponent();

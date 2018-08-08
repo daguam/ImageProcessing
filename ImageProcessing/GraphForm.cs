@@ -47,7 +47,7 @@ namespace ImageProcessing
                 }
             }
             graph.InitializeGraph(pointList);
-            graph.CompleteGraph();
+            graph.GraphWithObstruction(img);
             using (var graphics = Graphics.FromImage(imgGraph)) // Draws graph
             {
                 foreach (Node n in graph.NodeList)

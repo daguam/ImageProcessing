@@ -11,14 +11,24 @@ namespace ImageProcessing
     {
         List<Node> nodeList;
         List<Node> shortestPath;
+        List<Point> animationList;
+        Point animationPoint;
+        int flag = 0;
         double minWeight = double.MaxValue;
         double possible;
+        double arcWeight;
+        double m, b;
+        double x_c, x_i, x_f, x_aux;
+        double y_c, y_i, y_f, y_aux;
+        bool obstruction = false;
+        bool reverse = false;
 
         // Graph constructor method
         public Graph()
         {
             nodeList = new List<Node>();
             shortestPath = new List<Node>();
+            animationList = new List<Point>();
         }
 
         // Access modifiers for graph atributes
@@ -49,6 +59,245 @@ namespace ImageProcessing
                 Node n = new Node(p, i);
                 nodeList.Add(n);
                 i++;
+            }
+        }
+
+        // Creates a graph that only joins nodes with no obstructions between them
+
+        public void GraphWithObstruction(Bitmap img)
+        {          
+            using (var graphics = Graphics.FromImage(img))
+            {
+                foreach (Node origin in NodeList)
+                {
+                    foreach (Node destination in NodeList)
+                    {
+                        animationList.Clear();
+                        x_i = origin.NodePoint.X;
+                        x_f = destination.NodePoint.X;
+                        y_i = origin.NodePoint.Y;
+                        y_f = destination.NodePoint.Y;
+                        flag = 0;
+                        obstruction = false;
+                        if (origin.NodeNum != destination.NodeNum)
+                        {
+                            m = (y_f - y_i) / (x_f - x_i);
+                            b = y_i - (m * x_i);
+                            if ((m > 1 || m < -1) && double.IsInfinity(m) == false)
+                            {
+                                reverse = false;
+                                if (y_i > y_f)
+                                {
+                                    y_aux = y_i;
+                                    y_i = y_f;
+                                    y_f = y_aux;
+                                    reverse = true;
+                                }
+                                for (y_c = y_i; y_c <= y_f; y_c++)
+                                {
+                                    x_c = (y_c - b) / m;
+                                    animationPoint = new Point((int)x_c, (int)y_c);
+                                    animationList.Add(animationPoint);
+                                    if (flag == 0)
+                                    {
+                                        if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).R == 255)
+                                            if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).G == 255)
+                                                if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).B == 255)
+                                                {
+                                                    flag = 1;
+                                                }
+                                    }
+                                    if (flag == 1)
+                                    {
+                                        if ((img.GetPixel((int)(Math.Round(x_c)), (int)y_c).R <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).R >= 250) &&
+                                        (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).G <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).G >= 250) &&
+                                        (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).B <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).B >= 250))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            flag = 2;
+                                        }
+                                    }
+                                    if (flag == 2)
+                                    {
+                                        if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).R == 255)
+                                            if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).G == 255)
+                                                if (img.GetPixel((int)(Math.Round(x_c)), (int)y_c).B == 255)
+                                                {
+                                                    obstruction = true;
+                                                    break;
+                                                }
+                                    }
+                                }
+                                if (obstruction == false)
+                                {
+                                    arcWeight = Math.Sqrt(Math.Pow(x_i - x_f, 2) + Math.Pow(y_i - y_f, 2));
+                                    Arc a = new Arc(destination, arcWeight);
+                                    if (reverse == true)
+                                    {
+                                        animationList.Reverse();
+                                    }
+                                    a.CreateAnimationList(animationList);
+                                    origin.InsertArc(a);
+                                }
+                            }
+                            if (m <= 1 && m >= -1)
+                            {
+                                reverse = false;
+                                if (x_i > x_f)
+                                {
+                                    x_aux = x_i;
+                                    x_i = x_f;
+                                    x_f = x_aux;
+                                    reverse = true;
+                                }
+                                for (x_c = x_i; x_c <= x_f; x_c++)
+                                {
+                                    y_c = m * x_c + b;
+                                    animationPoint = new Point((int)x_c, (int)y_c);
+                                    animationList.Add(animationPoint);
+                                    if (flag == 0)
+                                    {
+                                        if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).R == 255)
+                                            if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).G == 255)
+                                                if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).B == 255)
+                                                {
+                                                    flag = 1;
+                                                }
+                                    }
+                                    if (flag == 1)
+                                    {
+                                        if ((img.GetPixel((int)x_c, (int)Math.Round(y_c)).R <= 255) && (img.GetPixel((int)x_c, (int)Math.Round(y_c)).R >= 250) &&
+                                        (img.GetPixel((int)x_c, (int)Math.Round(y_c)).G <= 255) && (img.GetPixel((int)x_c, (int)Math.Round(y_c)).G >= 250) &&
+                                        (img.GetPixel((int)x_c, (int)Math.Round(y_c)).B <= 255) && (img.GetPixel((int)x_c, (int)Math.Round(y_c)).B >= 250))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            flag = 2;
+                                        }
+                                        if (m > 0)
+                                        {
+                                            if((img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R >= 250) &&
+                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G >= 250) &&
+                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B >= 250))
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                flag = 2;
+                                                x_c++;
+                                            }
+                                        }
+                                        if (m < 0)
+                                        {
+                                            if ((img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R >= 250) &&
+                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G >= 250) &&
+                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B >= 250))
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                flag = 2;
+                                                x_c++;
+                                            }
+                                        }
+                                    }
+                                    if (flag == 2)
+                                    {
+                                        {
+                                            if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).R == 255)
+                                                if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).G == 255)
+                                                    if (img.GetPixel((int)x_c, (int)Math.Round(y_c)).B == 255)
+                                                    {
+                                                        obstruction = true;
+                                                        break;
+                                                    }
+                                        }
+                                    }
+                                }
+                                if (obstruction == false)
+                                {
+                                    arcWeight = Math.Sqrt(Math.Pow(x_i - x_f, 2) + Math.Pow(y_i - y_f, 2));
+                                    if (reverse == true)
+                                    {
+                                        animationList.Reverse();
+                                    }
+                                    Arc a = new Arc(destination, arcWeight);
+                                    a.CreateAnimationList(animationList);
+                                    origin.InsertArc(a);
+                                }
+
+                            }
+                            if (double.IsInfinity(m) == true)
+                            {
+                                reverse = false;
+                                if (y_i > y_f)
+                                {
+                                    y_aux = y_i;
+                                    y_i = y_f;
+                                    y_f = y_aux;
+                                    reverse = true;
+                                }
+                                for (y_c = y_i; y_c <= y_f; y_c++)
+                                {
+                                    x_c = x_i;
+                                    animationPoint = new Point((int)x_c, (int)y_c);
+                                    animationList.Add(animationPoint);
+                                    if (flag == 0)
+                                    {
+                                        if (img.GetPixel((int)x_c, (int)(y_c)).R == 255)
+                                            if (img.GetPixel((int)x_c, (int)(y_c)).G == 255)
+                                                if (img.GetPixel((int)x_c, (int)(y_c)).B == 255)
+                                                {
+                                                    flag = 1;
+                                                }
+                                    }
+                                    if (flag == 1)
+                                    {
+                                        if ((img.GetPixel((int)x_c, (int)(y_c)).R <= 255) && (img.GetPixel((int)x_c, (int)(y_c)).R >= 250) &&
+                                        (img.GetPixel((int)x_c, (int)(y_c)).G <= 255) && (img.GetPixel((int)x_c, (int)(y_c)).G >= 250) &&
+                                        (img.GetPixel((int)x_c, (int)(y_c)).B <= 255) && (img.GetPixel((int)x_c, (int)(y_c)).B >= 250))
+                                        {
+                                        }
+                                        else
+                                        {
+                                            flag = 2;
+                                        }
+                                    }
+                                    if (flag == 2)
+                                    {
+                                        {
+                                            if (img.GetPixel((int)x_c, (int)(y_c)).R == 255)
+                                                if (img.GetPixel((int)x_c, (int)(y_c)).G == 255)
+                                                    if (img.GetPixel((int)x_c, (int)(y_c)).B == 255)
+                                                    {
+                                                        obstruction = true;
+                                                        break;
+                                                    }
+                                        }
+                                    }
+                                }
+                                if (obstruction == false)
+                                {
+                                    arcWeight = Math.Sqrt(Math.Pow(x_i - x_f, 2) + Math.Pow(y_i - y_f, 2));
+                                    if (reverse == true)
+                                    {
+                                        animationList.Reverse();
+                                    }
+                                    Arc a = new Arc(destination, arcWeight);
+                                    a.CreateAnimationList(animationList);
+                                    origin.InsertArc(a);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -153,19 +402,23 @@ namespace ImageProcessing
         }
 
     }
+
     public class Arc
     {
         Node arcNode;
         double arcWeight;
+        List<Point> animationList;
 
         // Arc constructor method
         public Arc(Node arcNode, double arcWeight)
         {
             this.arcNode = arcNode;
             this.arcWeight = arcWeight;
+            this.animationList = new List<Point>();
         }
 
         // Access modifiers for Arc atributes
+
         public Node ArcNode
         {
             get { return arcNode; }
@@ -174,6 +427,41 @@ namespace ImageProcessing
         public double ArcWeight
         {
             get { return arcWeight; }
+        }
+
+        public List<Point> AnimationList
+        {
+            get { return animationList; }
+        }
+
+        // Arc methods
+
+        // Generates the animation list
+        public void CreateAnimationList (List<Point> pointList)
+        {
+            foreach (Point p in pointList)
+            {
+                animationList.Add(p);
+            }
+        }
+    }
+
+    public class Particle
+    {
+        Node particleNode;
+
+        // Particle constructor
+        public Particle (Node particleNode)
+        {
+            this.particleNode = particleNode;
+        }
+
+        // Access modifiers for Particle atributes
+
+        public Node ParticleNode
+        {
+            get { return particleNode; }
+            set { particleNode = value; }
         }
     }
 }
