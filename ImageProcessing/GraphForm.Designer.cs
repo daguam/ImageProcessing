@@ -62,7 +62,7 @@
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
             this.panelWindow.Name = "panelWindow";
             this.panelWindow.Size = new System.Drawing.Size(1200, 35);
-            this.panelWindow.TabIndex = 3;
+            this.panelWindow.TabIndex = 0;
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
             this.panelWindow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseUp);
@@ -75,7 +75,7 @@
             this.labelTitle.Location = new System.Drawing.Point(45, 10);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(99, 13);
-            this.labelTitle.TabIndex = 2;
+            this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "ImagePro - Graph";
             // 
             // pictureBoxIcon
@@ -147,7 +147,7 @@
             this.treeViewGraph.Location = new System.Drawing.Point(860, 94);
             this.treeViewGraph.Name = "treeViewGraph";
             this.treeViewGraph.Size = new System.Drawing.Size(302, 443);
-            this.treeViewGraph.TabIndex = 5;
+            this.treeViewGraph.TabIndex = 1;
             // 
             // buttonBack
             // 
@@ -162,7 +162,7 @@
             this.buttonBack.Location = new System.Drawing.Point(1145, 843);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(43, 25);
-            this.buttonBack.TabIndex = 6;
+            this.buttonBack.TabIndex = 4;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonExit_Click);
@@ -180,7 +180,7 @@
             this.buttonShortest.Location = new System.Drawing.Point(860, 843);
             this.buttonShortest.Name = "buttonShortest";
             this.buttonShortest.Size = new System.Drawing.Size(196, 25);
-            this.buttonShortest.TabIndex = 6;
+            this.buttonShortest.TabIndex = 3;
             this.buttonShortest.Text = "Shortest Path Containing 4 Nodes";
             this.buttonShortest.UseVisualStyleBackColor = false;
             this.buttonShortest.Click += new System.EventHandler(this.buttonShortest_Click);
@@ -191,7 +191,7 @@
             this.labelGraphInfo.Location = new System.Drawing.Point(979, 55);
             this.labelGraphInfo.Name = "labelGraphInfo";
             this.labelGraphInfo.Size = new System.Drawing.Size(63, 13);
-            this.labelGraphInfo.TabIndex = 7;
+            this.labelGraphInfo.TabIndex = 0;
             this.labelGraphInfo.Text = "Graph Info";
             // 
             // labelShortestPath
@@ -227,7 +227,7 @@
             this.buttonClear.Location = new System.Drawing.Point(971, 693);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(85, 44);
-            this.buttonClear.TabIndex = 6;
+            this.buttonClear.TabIndex = 2;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);

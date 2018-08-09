@@ -54,7 +54,7 @@
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
             this.panelWindow.Name = "panelWindow";
             this.panelWindow.Size = new System.Drawing.Size(774, 35);
-            this.panelWindow.TabIndex = 2;
+            this.panelWindow.TabIndex = 0;
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
             this.panelWindow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseUp);
@@ -67,7 +67,7 @@
             this.labelTitle.Location = new System.Drawing.Point(45, 10);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(168, 13);
-            this.labelTitle.TabIndex = 2;
+            this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "ImagePro - Find Circles Centers";
             // 
             // pictureBoxIcon
@@ -140,7 +140,7 @@
             this.buttonBack.Location = new System.Drawing.Point(705, 516);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(43, 25);
-            this.buttonBack.TabIndex = 4;
+            this.buttonBack.TabIndex = 2;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonExit_Click);
@@ -155,7 +155,7 @@
             this.listBoxCenters.Location = new System.Drawing.Point(584, 98);
             this.listBoxCenters.Name = "listBoxCenters";
             this.listBoxCenters.Size = new System.Drawing.Size(120, 377);
-            this.listBoxCenters.TabIndex = 5;
+            this.listBoxCenters.TabIndex = 1;
             // 
             // labelCenters
             // 
@@ -164,7 +164,7 @@
             this.labelCenters.Location = new System.Drawing.Point(621, 63);
             this.labelCenters.Name = "labelCenters";
             this.labelCenters.Size = new System.Drawing.Size(46, 13);
-            this.labelCenters.TabIndex = 6;
+            this.labelCenters.TabIndex = 0;
             this.labelCenters.Text = "Centers";
             // 
             // FindCirclesCentersForm

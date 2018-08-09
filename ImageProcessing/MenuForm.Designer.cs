@@ -110,7 +110,7 @@
             this.panelWindow.Location = new System.Drawing.Point(0, 0);
             this.panelWindow.Name = "panelWindow";
             this.panelWindow.Size = new System.Drawing.Size(580, 35);
-            this.panelWindow.TabIndex = 1;
+            this.panelWindow.TabIndex = 0;
             this.panelWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseDown);
             this.panelWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseMove);
             this.panelWindow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelWindow_MouseUp);
@@ -123,7 +123,7 @@
             this.labelTitle.Location = new System.Drawing.Point(45, 10);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(57, 13);
-            this.labelTitle.TabIndex = 2;
+            this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "ImagePro";
             // 
             // pictureBoxIcon
@@ -148,7 +148,7 @@
             this.buttonSelectImg.Location = new System.Drawing.Point(248, 69);
             this.buttonSelectImg.Name = "buttonSelectImg";
             this.buttonSelectImg.Size = new System.Drawing.Size(84, 25);
-            this.buttonSelectImg.TabIndex = 0;
+            this.buttonSelectImg.TabIndex = 1;
             this.buttonSelectImg.Text = "Select Image";
             this.buttonSelectImg.UseVisualStyleBackColor = false;
             this.buttonSelectImg.Click += new System.EventHandler(this.buttonSelectImg_Click);
@@ -169,7 +169,7 @@
             this.buttonFindCenters.Location = new System.Drawing.Point(211, 621);
             this.buttonFindCenters.Name = "buttonFindCenters";
             this.buttonFindCenters.Size = new System.Drawing.Size(84, 25);
-            this.buttonFindCenters.TabIndex = 0;
+            this.buttonFindCenters.TabIndex = 2;
             this.buttonFindCenters.Text = "Find Centers";
             this.buttonFindCenters.UseVisualStyleBackColor = false;
             this.buttonFindCenters.Click += new System.EventHandler(this.buttonFindCenters_Click);
@@ -198,7 +198,7 @@
             this.buttonGraph.Location = new System.Drawing.Point(301, 621);
             this.buttonGraph.Name = "buttonGraph";
             this.buttonGraph.Size = new System.Drawing.Size(51, 25);
-            this.buttonGraph.TabIndex = 0;
+            this.buttonGraph.TabIndex = 3;
             this.buttonGraph.Text = "Graph";
             this.buttonGraph.UseVisualStyleBackColor = false;
             this.buttonGraph.Click += new System.EventHandler(this.buttonGraph_Click);
