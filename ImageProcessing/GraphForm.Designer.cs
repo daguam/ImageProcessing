@@ -239,17 +239,18 @@
             this.labelHelp.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHelp.Location = new System.Drawing.Point(0, 0);
             this.labelHelp.Name = "labelHelp";
-            this.labelHelp.Size = new System.Drawing.Size(299, 53);
+            this.labelHelp.Size = new System.Drawing.Size(300, 55);
             this.labelHelp.TabIndex = 10;
             this.labelHelp.Text = "Double click on a node to insert particle";
             this.labelHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelHelp
             // 
+            this.panelHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHelp.Controls.Add(this.labelHelp);
-            this.panelHelp.Location = new System.Drawing.Point(863, 543);
+            this.panelHelp.Location = new System.Drawing.Point(860, 575);
             this.panelHelp.Name = "panelHelp";
-            this.panelHelp.Size = new System.Drawing.Size(299, 53);
+            this.panelHelp.Size = new System.Drawing.Size(302, 57);
             this.panelHelp.TabIndex = 11;
             // 
             // GraphForm

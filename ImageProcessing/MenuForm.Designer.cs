@@ -166,7 +166,7 @@
             this.buttonFindCenters.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonFindCenters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFindCenters.ForeColor = System.Drawing.Color.White;
-            this.buttonFindCenters.Location = new System.Drawing.Point(50, 621);
+            this.buttonFindCenters.Location = new System.Drawing.Point(211, 621);
             this.buttonFindCenters.Name = "buttonFindCenters";
             this.buttonFindCenters.Size = new System.Drawing.Size(84, 25);
             this.buttonFindCenters.TabIndex = 0;
@@ -195,7 +195,7 @@
             this.buttonGraph.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGraph.ForeColor = System.Drawing.Color.White;
-            this.buttonGraph.Location = new System.Drawing.Point(479, 621);
+            this.buttonGraph.Location = new System.Drawing.Point(301, 621);
             this.buttonGraph.Name = "buttonGraph";
             this.buttonGraph.Size = new System.Drawing.Size(51, 25);
             this.buttonGraph.TabIndex = 0;
