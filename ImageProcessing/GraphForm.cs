@@ -188,10 +188,10 @@ namespace ImageProcessing
                         {
                             using (var graphics = Graphics.FromImage(imgFront))
                             {
-                                foreach (Point p in a.AnimationList)
+                                for (int i = 0; i < a.AnimationList.Count; i+=4)                                
                                 {
                                     graphics.Clear(Color.Transparent);
-                                    graphics.FillEllipse(Brushes.LightBlue, p.X - 10, p.Y - 10, 15, 15);
+                                    graphics.FillEllipse(Brushes.LightBlue, a.AnimationList[i].X - 10, a.AnimationList[i].Y - 10, 15, 15);
                                     pictureBoxGraph.Refresh();
                                 }
                             }
