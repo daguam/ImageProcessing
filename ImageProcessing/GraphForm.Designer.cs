@@ -42,10 +42,13 @@
             this.labelShortestPath = new System.Windows.Forms.Label();
             this.panelGraph = new System.Windows.Forms.Panel();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.labelHelp = new System.Windows.Forms.Label();
+            this.panelHelp = new System.Windows.Forms.Panel();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
             this.panelGraph.SuspendLayout();
+            this.panelHelp.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelWindow
@@ -174,7 +177,7 @@
             this.buttonShortest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShortest.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShortest.ForeColor = System.Drawing.Color.White;
-            this.buttonShortest.Location = new System.Drawing.Point(910, 577);
+            this.buttonShortest.Location = new System.Drawing.Point(860, 843);
             this.buttonShortest.Name = "buttonShortest";
             this.buttonShortest.Size = new System.Drawing.Size(196, 25);
             this.buttonShortest.TabIndex = 6;
@@ -206,7 +209,7 @@
             // panelGraph
             // 
             this.panelGraph.Controls.Add(this.labelShortestPath);
-            this.panelGraph.Location = new System.Drawing.Point(860, 620);
+            this.panelGraph.Location = new System.Drawing.Point(860, 796);
             this.panelGraph.Name = "panelGraph";
             this.panelGraph.Size = new System.Drawing.Size(302, 41);
             this.panelGraph.TabIndex = 9;
@@ -219,21 +222,42 @@
             this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClear.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClear.Font = new System.Drawing.Font("Ebrima", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(982, 726);
+            this.buttonClear.Location = new System.Drawing.Point(971, 693);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(45, 25);
+            this.buttonClear.Size = new System.Drawing.Size(85, 44);
             this.buttonClear.TabIndex = 6;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // labelHelp
+            // 
+            this.labelHelp.AutoEllipsis = true;
+            this.labelHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHelp.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHelp.Location = new System.Drawing.Point(0, 0);
+            this.labelHelp.Name = "labelHelp";
+            this.labelHelp.Size = new System.Drawing.Size(299, 53);
+            this.labelHelp.TabIndex = 10;
+            this.labelHelp.Text = "Double click on a node to insert particle";
+            this.labelHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelHelp
+            // 
+            this.panelHelp.Controls.Add(this.labelHelp);
+            this.panelHelp.Location = new System.Drawing.Point(863, 543);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(299, 53);
+            this.panelHelp.TabIndex = 11;
             // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 880);
+            this.Controls.Add(this.panelHelp);
             this.Controls.Add(this.panelGraph);
             this.Controls.Add(this.labelGraphInfo);
             this.Controls.Add(this.buttonShortest);
@@ -253,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).EndInit();
             this.panelGraph.ResumeLayout(false);
+            this.panelHelp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +298,7 @@
         private System.Windows.Forms.Label labelShortestPath;
         private System.Windows.Forms.Panel panelGraph;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Label labelHelp;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }

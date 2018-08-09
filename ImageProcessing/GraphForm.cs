@@ -15,7 +15,8 @@ namespace ImageProcessing
     public partial class GraphForm : Form
     {
         Graph graph;
-        bool flag = false;
+        bool isfound = false;
+        bool isConnected = false;
         Boolean drag;
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
         Boolean shortestFlag = false;   // Flag used to prevent redraw for shortest path
@@ -137,11 +138,12 @@ namespace ImageProcessing
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            flag = false;
+            isfound = false;
             shortestFlag = false;
             labelShortestPath.Visible = false;
             labelShortestPath.ResetText();
             labelShortestPath.Text = "Shortest path weight: ";
+            labelHelp.Text = "Double click on a node to insert particle";
             using (var graphics = Graphics.FromImage(imgFront))
             {
                 graphics.Clear(Color.Transparent);
@@ -169,26 +171,17 @@ namespace ImageProcessing
             }
             if (found != null)
             {
-                Particle particle = new Particle(found);
-                if (!flag)
+                if(isfound)
                 {
-                    moveNode = found;
-                    using (var graphics = Graphics.FromImage(imgFront))
-                    {
-                        graphics.FillEllipse(Brushes.LightBlue, found.NodePoint.X - 10, found.NodePoint.Y - 10, 15, 15);
-                        pictureBoxGraph.Refresh();
-                    }
-                    flag = true;
-                }
-                if(flag)
-                {
+                    isConnected = false;
                     foreach (Arc a in moveNode.ArcList)
                     {
                         if (a.ArcNode == found)
                         {
+                            isConnected = true;
                             using (var graphics = Graphics.FromImage(imgFront))
                             {
-                                for (int i = 0; i < a.AnimationList.Count; i+=4)                                
+                                for (int i = 0; i < a.AnimationList.Count; i += 4)
                                 {
                                     graphics.Clear(Color.Transparent);
                                     graphics.FillEllipse(Brushes.LightBlue, a.AnimationList[i].X - 10, a.AnimationList[i].Y - 10, 15, 15);
@@ -196,8 +189,30 @@ namespace ImageProcessing
                                 }
                             }
                             moveNode = found;
+                            break;
+                        }                        
+                    }
+                    if(!isConnected)
+                    {
+                        CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                        DialogResult result = msgBoxWindow.Show("Node is not connected!");
+                        if (result == DialogResult.OK)
+                        {
+                            msgBoxWindow.Close();
                         }
                     }
+                }
+                Particle particle = new Particle(found);
+                if (!isfound)
+                {
+                    labelHelp.Text = "Double click on a new connected node to move the particle";
+                    moveNode = found;
+                    using (var graphics = Graphics.FromImage(imgFront))
+                    {
+                        graphics.FillEllipse(Brushes.LightBlue, found.NodePoint.X - 10, found.NodePoint.Y - 10, 15, 15);
+                        pictureBoxGraph.Refresh();
+                    }
+                    isfound = true;
                 }
             }
         }
