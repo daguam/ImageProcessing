@@ -12,6 +12,7 @@ namespace ImageProcessing
         List<Node> nodeList;
         List<Node> shortestPath;
         List<Point> animationList;
+        List<Node> nearestNodes;
         Point animationPoint;
         int flag = 0;
         double minWeight = double.MaxValue;
@@ -22,6 +23,7 @@ namespace ImageProcessing
         double y_c, y_i, y_f, y_aux;
         bool obstruction = false;
         bool reverse = false;
+        double nearest = double.MaxValue;
 
         // Graph constructor method
         public Graph()
@@ -29,6 +31,8 @@ namespace ImageProcessing
             nodeList = new List<Node>();
             shortestPath = new List<Node>();
             animationList = new List<Point>();
+            nearestNodes = new List<Node>();
+
         }
 
         // Access modifiers for graph atributes
@@ -41,6 +45,11 @@ namespace ImageProcessing
         public List<Node> ShortestPath
         {
             get { return shortestPath; }
+        }
+
+        public List<Node> NearestNodes
+        {
+            get { return nearestNodes; }
         }
 
         public double MinWeight
@@ -353,6 +362,23 @@ namespace ImageProcessing
                     }
                 }
             }
+        }
+        public void BruteForceNearest()
+        {      
+            foreach (Node n in nodeList)
+            {
+                foreach (Arc a in n.ArcList)
+                {
+                    if (a.ArcWeight < nearest)
+                    {
+                        nearestNodes.Clear();
+                        nearest = a.ArcWeight;
+                        nearestNodes.Add(n);
+                        nearestNodes.Add(a.ArcNode);
+                    }
+                }
+            }
+
         }
     }// End graph class
 

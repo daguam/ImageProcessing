@@ -20,6 +20,7 @@ namespace ImageProcessing
         Boolean drag;
         Boolean fail;   // Flag used to prevent opening the form when failing to process image
         Boolean shortestFlag = false;   // Flag used to prevent redraw for shortest path
+        Boolean nearestFlag = false;    // Flag used to prevent redraw for nearest nodes
         int mouseX;
         int mouseY;
         int xDisplacement = 0, yDisplacement = 0;
@@ -29,6 +30,7 @@ namespace ImageProcessing
         List<int> radiusList;
         Font drawFont = new Font("Ebrima", 16, FontStyle.Bold);
         Pen transparentPen = new Pen(Color.FromArgb (120, 138, 43, 223), 10);
+        Pen transparentPen2 = new Pen(Color.FromArgb(120, 45, 100, 0), 10);
         Node moveNode = null;
 
         // Window constructor
@@ -140,6 +142,7 @@ namespace ImageProcessing
         {
             isfound = false;
             shortestFlag = false;
+            nearestFlag = false;
             labelShortestPath.Visible = false;
             labelShortestPath.ResetText();
             labelShortestPath.Text = "Shortest path weight: ";
@@ -149,6 +152,35 @@ namespace ImageProcessing
                 graphics.Clear(Color.Transparent);
                 pictureBoxGraph.Refresh();
             }
+        }
+
+        private void buttonNearest_Click(object sender, EventArgs e)
+        {
+            if (nearestFlag == false)
+            {                
+                graph.BruteForceNearest();
+                if (graph.NearestNodes.Count > 1)
+                {
+                    using (var graphics = Graphics.FromImage(imgFront))
+                    {
+                        graphics.DrawLine(transparentPen2, graph.NearestNodes[0].NodePoint, graph.NearestNodes[1].NodePoint);
+                    }
+                    nearestFlag = true;
+                    pictureBoxGraph.Image = imgFront;
+                    pictureBoxGraph.Refresh();
+                }
+                else
+                {
+                    CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
+                    DialogResult result = msgBoxWindow.Show("Graph must have at least 2 connected nodes!");
+                    if (result == DialogResult.OK)
+                    {
+                        msgBoxWindow.Close();
+                    }
+
+                }
+            }
+
         }
 
         private void pictureBoxGraph_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -253,7 +285,7 @@ namespace ImageProcessing
                 else
                 {
                     CustomMsgBoxForm msgBoxWindow = new CustomMsgBoxForm();
-                    DialogResult result = msgBoxWindow.Show("Graph must have at least 4 nodes!");
+                    DialogResult result = msgBoxWindow.Show("Graph must have at least 4 connected nodes!");
                     if (result == DialogResult.OK)
                     {
                         msgBoxWindow.Close();

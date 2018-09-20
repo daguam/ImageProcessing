@@ -44,6 +44,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.labelHelp = new System.Windows.Forms.Label();
             this.panelHelp = new System.Windows.Forms.Panel();
+            this.buttonNearest = new System.Windows.Forms.Button();
             this.panelWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
@@ -177,7 +178,7 @@
             this.buttonShortest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShortest.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShortest.ForeColor = System.Drawing.Color.White;
-            this.buttonShortest.Location = new System.Drawing.Point(860, 843);
+            this.buttonShortest.Location = new System.Drawing.Point(912, 637);
             this.buttonShortest.Name = "buttonShortest";
             this.buttonShortest.Size = new System.Drawing.Size(196, 25);
             this.buttonShortest.TabIndex = 3;
@@ -209,7 +210,7 @@
             // panelGraph
             // 
             this.panelGraph.Controls.Add(this.labelShortestPath);
-            this.panelGraph.Location = new System.Drawing.Point(860, 796);
+            this.panelGraph.Location = new System.Drawing.Point(860, 675);
             this.panelGraph.Name = "panelGraph";
             this.panelGraph.Size = new System.Drawing.Size(302, 41);
             this.panelGraph.TabIndex = 9;
@@ -224,7 +225,7 @@
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Ebrima", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(971, 693);
+            this.buttonClear.Location = new System.Drawing.Point(972, 824);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(85, 44);
             this.buttonClear.TabIndex = 2;
@@ -248,16 +249,35 @@
             // 
             this.panelHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHelp.Controls.Add(this.labelHelp);
-            this.panelHelp.Location = new System.Drawing.Point(860, 575);
+            this.panelHelp.Location = new System.Drawing.Point(860, 564);
             this.panelHelp.Name = "panelHelp";
             this.panelHelp.Size = new System.Drawing.Size(302, 57);
             this.panelHelp.TabIndex = 11;
+            // 
+            // buttonNearest
+            // 
+            this.buttonNearest.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonNearest.AutoSize = true;
+            this.buttonNearest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonNearest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonNearest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonNearest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNearest.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNearest.ForeColor = System.Drawing.Color.White;
+            this.buttonNearest.Location = new System.Drawing.Point(961, 728);
+            this.buttonNearest.Name = "buttonNearest";
+            this.buttonNearest.Size = new System.Drawing.Size(96, 25);
+            this.buttonNearest.TabIndex = 12;
+            this.buttonNearest.Text = "Nearest Nodes";
+            this.buttonNearest.UseVisualStyleBackColor = false;
+            this.buttonNearest.Click += new System.EventHandler(this.buttonNearest_Click);
             // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 880);
+            this.Controls.Add(this.buttonNearest);
             this.Controls.Add(this.panelHelp);
             this.Controls.Add(this.panelGraph);
             this.Controls.Add(this.labelGraphInfo);
@@ -301,5 +321,6 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label labelHelp;
         private System.Windows.Forms.Panel panelHelp;
+        private System.Windows.Forms.Button buttonNearest;
     }
 }
