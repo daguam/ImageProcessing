@@ -128,6 +128,17 @@ namespace ImageProcessing
                                         {
                                             flag = 2;
                                         }
+                                        if ((img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).R <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).R >= 250) &&
+                                        (img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).G <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).G >= 250) &&
+                                        (img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).B <= 255) && (img.GetPixel((int)(Math.Round(x_c)), (int)y_c+1).B >= 250))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            flag = 2;
+                                            y_c++;
+                                        }
                                     }
                                     if (flag == 2)
                                     {
@@ -188,7 +199,7 @@ namespace ImageProcessing
                                         {
                                             flag = 2;
                                         }
-                                        if (m > 0)
+                                        if (m > 0 || m < 0) 
                                         {
                                             if((img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R >= 250) &&
                                             (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G >= 250) &&
@@ -201,21 +212,7 @@ namespace ImageProcessing
                                                 flag = 2;
                                                 x_c++;
                                             }
-                                        }
-                                        if (m < 0)
-                                        {
-                                            if ((img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).R >= 250) &&
-                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).G >= 250) &&
-                                            (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B <= 255) && (img.GetPixel((int)x_c + 1, (int)Math.Round(y_c)).B >= 250))
-                                            {
-
-                                            }
-                                            else
-                                            {
-                                                flag = 2;
-                                                x_c++;
-                                            }
-                                        }
+                                        }                                        
                                     }
                                     if (flag == 2)
                                     {
@@ -337,7 +334,7 @@ namespace ImageProcessing
                 {
                     foreach (Arc a2 in a.ArcNode.ArcList)
                     {
-                        foreach (Arc a3 in a.ArcNode.ArcList)
+                        foreach (Arc a3 in a2.ArcNode.ArcList)
                         {
                             if(n.NodeNum != a.ArcNode.NodeNum && n.NodeNum != a2.ArcNode.NodeNum && n.NodeNum != a3.ArcNode.NodeNum)
                             {
